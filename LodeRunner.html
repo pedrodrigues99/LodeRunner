@@ -1,0 +1,175 @@
+<HTML>
+
+<!--
+Lode Runner!!! HTML
+
+01234567890123456789012345678901234567890123456789012345678901234567890123456789
+-->
+
+<HEAD>
+<meta charset="UTF-8">
+<title>Linguagens e Ambientes de Programação (2019/2020) [Eng.Inf. - DI/FCT/UNL] - 3º projeto prático (Javascript)</title>
+
+<SCRIPT TYPE="text/javascript" src="LodeRunner0.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="LodeRunner.js"></SCRIPT>
+
+<SCRIPT>
+function fillCanvas() {
+    let c=document.getElementById("canvas1");
+    let ctx=c.getContext("2d");
+
+    var img = new Image;
+	img.onload = function(){
+	ctx.drawImage(img,60,0);
+	}
+	img.src = "https://www.c64-wiki.com/images/e/ec/Loderunner-titel.png";
+}
+
+function runForm2(form) {
+    let levelNumber = form.nLevel.value;
+    if( levelNumber == "" || levelNumber < 1  || levelNumber > 16 ) {
+        alert("Error: Invalid Level");
+    }
+    else {
+		loadNLevel(levelNumber);
+    }
+}
+
+</SCRIPT>
+
+<link href='https://fonts.googleapis.com/css?family=Press Start 2P' 
+	rel='stylesheet'>
+
+<style>
+.board {
+  border: 3px outset skyblue;
+  height: 120px;
+  width: 52%;
+  background-color: black;
+  text-align: center;
+  color: #d8462c;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  word-spacing: 10px;
+}
+
+.levelSelector {
+  border : 3px outset #d8462c;
+  height: 272px;
+  width: 180px;
+  background-color: skyblue;    
+  text-align: center;
+  color: black;
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  float: left;
+  padding-left: 5px;
+ }
+ 
+ .button {
+  background-color: skyblue;
+  border: none;
+  color: #d8462c;
+  padding: 2px 2px;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Press Start 2P';
+  font-size: 8px;
+  margin: 1px 1px;
+  cursor: pointer;
+}
+</style>
+
+</HEAD>
+
+
+<BODY onload="fillCanvas()">
+<p><b>LodeRunner</b> -- <b>Ângelo Bennett</b> (53623), 
+<b>Pedro Rodrigues</b> (53713)
+<FORM NAME="form1">
+	<CANVAS id="canvas1" width="504" height="272" style="border:3px solid skyblue;">
+		Your browser doesn't support the HTML5 CANVAS tag.
+	</CANVAS>
+	
+	<div class="levelSelector">
+	<h2>Choose level:
+	<br>
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 01" SIZE=10 
+	OnClick="loadNLevel(1)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 09" SIZE=10 
+	OnClick="loadNLevel(9)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 02" SIZE=10 
+	OnClick="loadNLevel(2)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 10" SIZE=10 
+	OnClick="loadNLevel(10)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 03" SIZE=10 
+	OnClick="loadNLevel(3)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 11" SIZE=10 
+	OnClick="loadNLevel(11)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 04" SIZE=10 
+	OnClick="loadNLevel(4)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 12" SIZE=10 
+	OnClick="loadNLevel(12)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 05" SIZE=10 
+	OnClick="loadNLevel(5)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 13" SIZE=10 
+	OnClick="loadNLevel(13)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 06" SIZE=10 
+	OnClick="loadNLevel(6)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 14" SIZE=10 
+	OnClick="loadNLevel(14)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 07" SIZE=10 
+	OnClick="loadNLevel(7)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 15" SIZE=10 
+	OnClick="loadNLevel(15)">
+	<br>
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 08" SIZE=10 
+	OnClick="loadNLevel(8)">
+	<INPUT TYPE="button" CLASS="button" VALUE="LEVEL 16" SIZE=10 
+	OnClick="loadNLevel(16)">
+	<br>
+	</div></p>
+	
+	<FORM ID="form2">
+	<div class="board">
+    <h1>Score:
+	<SPAN id='sc'>0</SPAN></h1>
+    <p>GOLD RECOVERED FROM THE BUNGELING EMPIRE:
+	<SPAN id='nGold'>0</SPAN>
+	<br>
+	<br>
+	GOLD REMAINING IN THIS LEVEL:
+	<SPAN id='nGoldLeft'>0</SPAN>
+	<br>
+    <br>
+    DEATH COUNTER:
+    <SPAN id='deathCounter'> 0</SPAN></p>
+	</div>
+	
+	<br>
+	<INPUT TYPE="button" NAME="Button3" VALUE="Start/Restart" SIZE=10 
+	OnClick="onLoad()">
+	<INPUT TYPE="button" NAME="Button4" VALUE="Restart Level" SIZE=10 
+	OnClick="reloadLevel()">
+	<br>
+	<br>
+	<INPUT TYPE="button" NAME="Button1" VALUE="Play Music" SIZE=10 
+	OnClick="b1()"> 
+	<INPUT TYPE="button" NAME="Button2" VALUE="Pause Music" SIZE=10 
+	OnClick="b2()">
+	 
+</FORM>
+</BODY>
+
+</HTML>
+<!-- código inicial de AMD/2020 -->
+<!-- vim:set ts=4 sw=4 et: -->
